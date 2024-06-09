@@ -14,4 +14,5 @@ async def root():
 async def ping():
     return "pong"
 
+
 app.include_router(router)
