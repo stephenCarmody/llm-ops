@@ -2,11 +2,11 @@ name: Continuous Integration
 
 on:
   push:
-      branches:
-        -main
-    pull_request:
-      branches:
-        -main
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
@@ -16,27 +16,24 @@ jobs:
       PYTHON_VERSION: 3.11
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: {{ env.POETRY_VERSION }}
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
 
-   - name: Setup Poetry
-      uses: Gr1n/setup-poetry@v9
-      with:
-        poetry-version: ${{ env.POETRY_VERSION }}
+      - name: Setup Poetry
+        uses: Gr1n/setup-poetry@v9
+        with:
+          poetry-version: ${{ env.POETRY_VERSION }}
 
-    - name: Install dependencies
-      run: |
-        poetry install
+      - name: Install dependencies
+        run: poetry install
 
-    - name: Run linters
-      run: |
-        make lint
+      - name: Run linters
+        run: make lint
 
-    - name: Run tests
-      run: |
-        make test
+      - name: Run tests
+        run: make test
