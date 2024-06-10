@@ -11,7 +11,8 @@
 ### CI/CD
 
 - [x] Add a Dockerfile 
-- [ ] Add some basic CI in GHA
+- [x] Add some basic CI in GHA
+- [ ] Add Depoyment pipeline that buils image and pushes to ECR
 
 ### Instrumentation
 - [ ] Add OpenTelemetry 

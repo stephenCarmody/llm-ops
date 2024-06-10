@@ -1,0 +1,24 @@
+name: Continuous Deployment
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment'
+        required: false
+        options: 
+        - stage
+        - prod
+        default: 'stage'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to Environment
+        run: |
+          echo "Deploying to ${{ github.event.inputs.environment }} environment..."
