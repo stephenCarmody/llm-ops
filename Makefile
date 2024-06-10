@@ -3,8 +3,8 @@ api-up:
 .PHONY: api-up
 
 lint-fix:
-	poetry run isort src tests
-	poetry run black src tests
+	poetry run isort serving tests
+	poetry run black serving tests
 .PHONY: lint-fix
 
 test:
