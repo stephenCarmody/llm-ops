@@ -1,6 +1,7 @@
-from fastapi import APIRouter, FastAPI, Response
-import numpy as np
 import json
+
+import numpy as np
+from fastapi import APIRouter, FastAPI, Response
 
 router = APIRouter()
 
@@ -16,8 +17,9 @@ async def root():
 async def ping():
     return "pong"
 
+
 @router.post("/inference")
-async def ping():
+async def inference():
     output = {"predictions": np.array([0.1, 0.2, 0.3]).tolist()}
     return Response(json.dumps(output))
 

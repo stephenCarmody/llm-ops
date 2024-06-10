@@ -1,4 +1,3 @@
-import numpy as np
 import pytest
 from fastapi import status
 from fastapi.testclient import TestClient
@@ -25,8 +24,9 @@ def test_ping(client):
     assert response.status_code == status.HTTP_200_OK
     assert response.json() == "pong"
 
+
 def test_inference(client):
 
     response = client.post("/inference")
     assert response.status_code == status.HTTP_200_OK
-    assert response.json() == {'predictions': [0.1, 0.2, 0.3]}
+    assert response.json() == {"predictions": [0.1, 0.2, 0.3]}
